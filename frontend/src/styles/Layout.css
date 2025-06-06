@@ -1,0 +1,13 @@
+/* src/styles/Layout.css */
+
+.layout-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.layout-content {
+  margin-left: 200px; /* width of the sidebar */
+  padding: 2rem;
+  flex-grow: 1;
+  background-color: #f9f9f9;
+}

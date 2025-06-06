@@ -35,21 +35,23 @@ def enforce_foreign_keys(dbapi_connection, connection_record):
         cursor.close()
 
 # Import and register Blueprints
+from auth.routes import auth_bp
 from routes.clients import clients_bp
 from routes.trips import trips_bp
 from routes.invoices import invoices_bp
 from routes.payments import payments_bp
 from routes.reports import reports_bp
 from routes.client_notes import notes_bp
-from auth.routes import auth_bp
+from routes.dashboard import dashboard
 
+app.register_blueprint(auth_bp)
 app.register_blueprint(notes_bp)
 app.register_blueprint(clients_bp)
 app.register_blueprint(trips_bp)
 app.register_blueprint(invoices_bp)
 app.register_blueprint(payments_bp)
 app.register_blueprint(reports_bp)
-app.register_blueprint(auth_bp)
+app.register_blueprint(dashboard)
 
 # Import models for table creation
 from models.client import Client

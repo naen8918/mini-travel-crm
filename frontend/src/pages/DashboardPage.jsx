@@ -1,20 +1,36 @@
-import React from "react";
+// src/pages/DashboardPage.jsx
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-function DashboardPage() {
-  const token = localStorage.getItem("token");
+const DashboardPage = () => {
+  const [userData, setUserData] = useState(null);
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+  if (token) {
+      axios.get('http://localhost:5000/dashboard', {
+        headers: { 
+          Authorization: `Bearer ${token}` 
+        }
+      })
+      .then(res => setUserData(res.data))
+      .catch(err => {
+        console.error('Failed to fetch dashboard data:', err);
+        setUserData({ error: 'Unauthorized or session expired' });
+      });
+    }
+  }, [token]); // include token in dependency array
+
+
+  if (!userData) return <p>Loading...</p>;
+  if (userData.error) return <p>{userData.error}</p>;
 
   return (
-    <div>
-      <h2>Dashboard</h2>
-      <p>Welcome to your dashboard!</p>
-      <p>Your token: {token ? token.slice(0, 20) + "..." : "Not logged in"}</p>
-      <button onClick={() => {
-        localStorage.removeItem("token");
-        window.location.href = "/login";
-        }}>Logout</button>
-
+    <div className="p-6">
+      <h1 className="text-2xl font-bold">Welcome, {userData.name || userData.email}</h1>
+      <p>Role: {userData.role}</p>
     </div>
   );
-}
+};
 
 export default DashboardPage;

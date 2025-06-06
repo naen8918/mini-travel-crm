@@ -26,10 +26,11 @@ def register():
 
     email = data.get('email')
     password = data.get('password')
+    name = data.get('name')  # New
     role = data.get('role', 'agent')
 
-    if not email or not password:
-        return jsonify({'error': 'Email and password are required'}), 400
+    if not email or not password or not name:
+        return jsonify({'error': 'Name, email, and password are required'}), 400
 
     if role not in VALID_ROLES:
         return jsonify({'error': f'Invalid role. Must be one of {list(VALID_ROLES)}'}), 400
@@ -37,7 +38,7 @@ def register():
     if User.query.filter_by(username=email).first():
         return jsonify({'error': 'Email already registered'}), 409
 
-    user = User(username=email, role=role)
+    user = User(username=email, name=name, role=role)
     user.password_hash = hash_password(password)
 
     db.session.add(user)
@@ -66,10 +67,16 @@ def login():
     if not user or not verify_password(password, user.password_hash):
         return jsonify({'error': 'Invalid email or password'}), 401
 
+    # identity must be a string (usually user ID)
+    # place extra data into 'additional_claims'
     token = create_access_token(
-        identity=str(user.id),
-        additional_claims={"role": user.role}
-    )
+    identity=str(user.id),
+    additional_claims={
+        "username": user.username,
+        "name": user.name,       
+        "role": user.role
+    }
+)
 
     return jsonify({'access_token': token}), 200
 
