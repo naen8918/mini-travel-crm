@@ -1,5 +1,9 @@
 /* src/styles/Layout.css */
 
+body {
+  font-family: 'Inter', sans-serif;
+}
+
 .layout-container {
   display: flex;
   min-height: 100vh;
