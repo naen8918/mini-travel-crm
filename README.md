@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+# 🌐 Mini Travel CRM – React Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![React](https://img.shields.io/badge/react-18.x-blue)
+![Status](https://img.shields.io/badge/status-in%20progress-yellow)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
-## Available Scripts
+> Frontend dashboard for the Mini Travel CRM system – built with **React**, designed to integrate securely with the Flask REST API backend. Enables agents, analysts, and admins to manage client data, invoices, and analytics.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📌 Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This frontend provides:
+- 🔐 Login & protected route access via JWT
+- 🧭 Navigation Sidebar & Dashboard layout
+- 📁 Placeholder pages for Clients, Invoices, Trips
+- 🎨 Modular layout system using React Router and custom components
+- 📦 Easy setup & deploy-ready structure
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🧱 Folder Structure
+```bash
+frontend/
+├── public/ # Static assets
+├── src/
+│ ├── components/ # Shared UI components (Sidebar, Layout, PrivateRoute)
+│ ├── pages/ # Page views (Dashboard, Clients, etc.)
+│ ├── styles/ # CSS for layout and styling
+│ ├── App.js # Main routing setup
+│ └── index.js # Entry point
+├── package.json
+└── README.md
+```
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Getting Started (Development)
 
-### `npm run build`
+### 1. Clone the repo
+```bash
+git clone https://github.com/naen8918/mini-travel-crm.git
+cd mini-travel-crm/frontend
+```
+### 2. Install dependencies
+```bash
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 3. Run the app
+```bash
+npm start
+```
+The app will start on http://localhost:3000 and connect to your backend at http://localhost:5000.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 🔐 Authentication
+This app uses **JWT authentication**:
+- Tokens are saved to `localStorage` after login
+- Protected routes use `<PrivateRoute>` logic
+- Logout clears the token and redirects to login
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🖼️ Current Screens
+| Page         | Description                        |
+| ------------ | ---------------------------------- |
+| `/`          | Login form                         |
+| `/dashboard` | Shows user name and role from JWT  |
+| `/clients`   | Placeholder for clients management |
+| `/invoices`  | Placeholder for invoices           |
+| `/trips`     | Placeholder for trips              |
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 🔧 Customization Tips
+- Update `Sidebar.jsx` to match your CRM structure
+- Use `Layout.jsx` to keep UI consistent across pages
+- Add Tailwind, Bootstrap, or your preferred styling framework if desired
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 🔮 Future Improvements
+| Feature                  | Status  | Description                          |
+| ------------------------ | ------- | ------------------------------------ |
+| ✅ User greeting by name  | Done ✅  | Uses `name` from backend JWT claims  |
+| 🔁 Real data loading     | Not yet | Connect Clients, Invoices to backend |
+| 🛑 Role-based UI locking | Planned | Admin-only routes and views          |
+| 🌈 Better styling        | Planned | Add Tailwind or Material UI          |
+| 🌐 Responsive design     | Planned | Mobile/tablet-friendly layout        |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 🧠 Author
+### Nazgul Engvall
+#### React/Flask Developer
+GitHub: [naen8918](https://github.com/naen8918)
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 📄 License
+This frontend is licensed under the MIT License.
+Built for learning, personal portfolio, and small business use cases.

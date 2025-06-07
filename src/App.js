@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import ClientsPage from "./pages/ClientsPage";
+import SingleClientPage from "./pages/SingleClientPage";
 import InvoicesPage from "./pages/InvoicesPage";
 import TripsPage from "./pages/TripsPage";
 import NotFoundPage from "./pages/NotFoundPage";
@@ -26,6 +27,11 @@ function App() {
         <Route path="/clients" element={
           <PrivateRoute>
             <Layout><ClientsPage /></Layout>
+          </PrivateRoute>
+        } />
+        <Route path="/clients/:id" element={
+          <PrivateRoute>
+            <Layout><SingleClientPage /></Layout>
           </PrivateRoute>
         } />
         <Route path="/invoices" element={
