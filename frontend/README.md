@@ -20,7 +20,7 @@ This frontend provides:
 ---
 
 ## 🧱 Folder Structure
-
+```bash
 frontend/
 ├── public/ # Static assets
 ├── src/
@@ -31,7 +31,7 @@ frontend/
 │ └── index.js # Entry point
 ├── package.json
 └── README.md
-
+```
 ---
 
 ## 🚀 Getting Started (Development)
